@@ -4,8 +4,6 @@
 
 #pragma newdecls required
 
-#define PLUGIN_VERSION	"1.1"
-
 int last_radio_use[MAXPLAYERS+1];
 int note[MAXPLAYERS+1];
 
@@ -21,14 +19,12 @@ public Plugin myinfo =
 	name = "Radio Spam Block",
 	author = "exvel, maxime1907",
 	description = "Blocking players from radio spam. Also can disable radio commands for all players on the server if option is set.",
-	version = PLUGIN_VERSION,
+	version = "1.1.0",
 	url = ""
 }
 
 public void OnPluginStart()
 {
-	CreateConVar("sm_radio_spam_block_version", PLUGIN_VERSION, "Radio Spam Block Version", FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY);
-
 	cvar_radio_spam_block = CreateConVar("sm_radio_spam_block", "1", "0 = disabled, 1 = enabled Radio Spam Block functionality", 0, true, 0.0, true, 1.0);
 	cvar_radio_spam_block_time = CreateConVar("sm_radio_spam_block_time", "5", "Time in seconds between radio messages", 0, true, 1.0, true, 60.0);
 	cvar_radio_spam_block_all = CreateConVar("sm_radio_spam_block_all", "0", "0 = disabled, 1 = block all radio messages", 0, true, 0.0, true, 1.0);
