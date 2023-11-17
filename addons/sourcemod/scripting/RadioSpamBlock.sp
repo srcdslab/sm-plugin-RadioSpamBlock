@@ -76,8 +76,8 @@ public void OnPluginStart()
 	RegConsoleCmd("enemydown", RestrictRadio);
 
 
-	HookUserMessage(RadioText, _hkRadioText, true);
-	HookUserMessage(SendAudio, _hkSendAudio, true);
+	HookUserMessage(RadioText, Hook_RadioText, true);
+	HookUserMessage(SendAudio, Hook_SendAudio, true);
 
 	AutoExecConfig(true);
 }
@@ -146,7 +146,7 @@ public Action Command_RadioUnmute(int client, int argc)
 	return Plugin_Handled;
 }
 
-public Action _hkRadioText(UserMsg msg_id, Handle bf, const int[] players, int playersNum, bool reliable, bool init)
+public Action Hook_RadioText(UserMsg msg_id, Handle bf, const int[] players, int playersNum, bool reliable, bool init)
 {
 	if (!g_bProtoBuf)
 		return Plugin_Continue;
@@ -159,7 +159,7 @@ public Action _hkRadioText(UserMsg msg_id, Handle bf, const int[] players, int p
 	return Plugin_Continue;
 }
 
-public Action _hkSendAudio(UserMsg msg_id, Handle bf, const int[] players, int playersNum, bool reliable, bool init)
+public Action Hook_SendAudio(UserMsg msg_id, Handle bf, const int[] players, int playersNum, bool reliable, bool init)
 {
 	if (!g_bProtoBuf || g_iMessageClient == -1)
 		return Plugin_Continue;
