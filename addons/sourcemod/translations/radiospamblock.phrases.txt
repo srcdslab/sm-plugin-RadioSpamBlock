@@ -4,6 +4,7 @@
 	{
 		"en"			"Wait 1 second before sending a new radio message"
 		"ru"			"Подождите 1 секунду перед отправкой новго радио сообщения"
+		"fr"			"Attendez 1 seconde avant d'envoyer un nouveau message radio"
 	}
 
 	"Wait X seconds"
@@ -11,11 +12,20 @@
 		"#format"		"{1:d}"
 		"en"			"Wait {1} seconds before new radio message"
 		"ru"			"Подождите {1} секунд перед отправкой нового радио сообщения"
+		"fr"			"Attendez {1} secondes avant d'envoyer un nouveau message radio"
+	}
+
+	"Radio muted"
+	{
+		"en"			"Your radio is currently muted"
+		"ru"			"Ваше радио в настоящее время отключено"
+		"fr"			"Votre radio est actuellement mute"
 	}
 
 	"Disabled"
 	{
 		"en"			"Radio messages disabled"
 		"ru"			"Радио сообщения отключены"
+		"fr"			"Messages radio désactivés"
 	}
 }
