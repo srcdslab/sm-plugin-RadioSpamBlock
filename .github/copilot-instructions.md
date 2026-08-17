@@ -5,9 +5,9 @@ This repository contains a SourcePawn plugin for SourceMod that prevents radio c
 
 ## Technical Environment
 - **Language**: SourcePawn
-- **Platform**: SourceMod 1.11+ (configured for 1.11.0-git6934)
-- **Build Tool**: SourceKnight 0.2
-- **Compiler**: SourceMod SourcePawn Compiler (spcomp) via SourceKnight
+- **Platform**: SourceMod 1.12+
+- **Build Tool**: Native GitHub Actions (rumblefrog/setup-sp)
+- **Compiler**: SourceMod SourcePawn Compiler (spcomp)
 - **Dependencies**: MultiColors include library
 
 ## Project Structure
@@ -17,7 +17,6 @@ addons/sourcemod/
 │   └── RadioSpamBlock.sp          # Main plugin source code
 └── translations/
     └── radiospamblock.phrases.txt # Localization phrases (EN/RU/FR)
-sourceknight.yaml                  # Build configuration
 .github/workflows/ci.yml           # CI/CD pipeline
 ```
 
@@ -62,29 +61,20 @@ Radio message sent to other players
 
 ## Build System
 
-### SourceKnight Configuration
-The project uses SourceKnight instead of direct spcomp compilation:
-```yaml
-project:
-  sourceknight: 0.2
-  name: RadioSpamBlock
-  dependencies:
-    - sourcemod (1.11.0-git6934)
-    - multicolors (from GitHub)
-  targets:
-    - RadioSpamBlock
-```
+### GitHub Actions Configuration
+The project builds directly with spcomp via `rumblefrog/setup-sp`, cloning the
+MultiColors include dependency at build time. See `.github/workflows/ci.yml`
+for the full pipeline.
 
 ### Building Locally
 ```bash
-# Using SourceKnight CLI (if installed)
-sourceknight build
-
-# The CI uses GitHub Actions with maxime1907/action-sourceknight@v1
+# Install the SourceMod 1.12.x compiler (spcomp) and the MultiColors include,
+# then compile from addons/sourcemod/scripting:
+spcomp -i include -o ../plugins/RadioSpamBlock.smx RadioSpamBlock.sp
 ```
 
 ### Build Outputs
-- Compiled plugin: `.sourceknight/package/common/addons/sourcemod/plugins/RadioSpamBlock.smx`
+- Compiled plugin: `addons/sourcemod/plugins/RadioSpamBlock.smx`
 - Translations copied to package during CI
 
 ## Code Style & Standards
@@ -132,7 +122,7 @@ ProcessTargetString(sArgs, client, iTargets, MAXPLAYERS,
 1. **Follow existing ConVar pattern**: Create ConVar in `OnPluginStart()`, use consistent naming
 2. **Add translations**: All user-facing messages must support localization
 3. **Update `OnClientConnected`/`OnClientDisconnect`**: Reset any new per-client state
-4. **Consider SourceKnight build**: Dependencies go in `sourceknight.yaml`
+4. **Consider the build workflow**: Dependencies are cloned in `.github/workflows/ci.yml`
 
 ### Memory Management
 - ConVars are created once in `OnPluginStart()` and don't need cleanup
@@ -170,8 +160,8 @@ Test these ConVar combinations:
 ## CI/CD Pipeline
 
 ### Automated Workflow
-1. **Build**: SourceKnight compilation with dependency fetching
-2. **Package**: Copy translations and create release structure  
+1. **Build**: spcomp compilation via `rumblefrog/setup-sp`, with MultiColors cloned as a dependency
+2. **Package**: Copy translations and create release structure
 3. **Tag**: Auto-tag latest builds from main branch
 4. **Release**: Create GitHub releases with packaged plugin
 
@@ -182,8 +172,8 @@ Test these ConVar combinations:
 
 ### Dependency Management
 - **Dependabot**: Configured for weekly GitHub Actions updates
-- **SourceKnight**: Handles SourceMod and plugin dependencies automatically
-- **Version Pinning**: SourceMod version pinned to specific build for stability
+- **CI workflow**: Clones the MultiColors include repo during the build step
+- **Version Pinning**: SourceMod compiler pinned to the 1.12.x branch via `rumblefrog/setup-sp`
 
 ## Dependencies
 
@@ -191,17 +181,11 @@ Test these ConVar combinations:
 - `sourcemod`: Core SourceMod API
 - `multicolors`: Enhanced color messaging (external dependency)
 
-### SourceKnight Dependency Management
-Dependencies are automatically fetched during build:
-```yaml
-dependencies:
-  - name: sourcemod
-    type: tar
-    version: 1.11.0-git6934
-    location: https://sm.alliedmods.net/smdrop/1.11/
-  - name: multicolors
-    type: git
-    repo: https://github.com/srcdslab/sm-plugin-MultiColors
+### CI Dependency Management
+Dependencies are fetched during the build step in `.github/workflows/ci.yml`:
+```bash
+git clone --depth=1 https://github.com/srcdslab/sm-plugin-MultiColors.git deps/multicolors
+cp -R deps/multicolors/addons/sourcemod/scripting/include/* addons/sourcemod/scripting/include/
 ```
 
 ## File Modification Guidelines
@@ -218,9 +202,9 @@ dependencies:
 - Follow SourceMod phrase file format
 - Test format placeholders (`{1:d}`, etc.)
 
-### When editing `sourceknight.yaml`
+### When editing `.github/workflows/ci.yml`
 - Version changes require testing build compatibility
-- New dependencies need proper source/dest mapping
+- New dependencies need proper clone/copy steps added to the Install dependencies step
 - Maintain existing project structure
 
 ## Versioning Strategy
