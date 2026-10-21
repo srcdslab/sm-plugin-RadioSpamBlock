@@ -10,10 +10,10 @@ int g_bRadioLastUse[MAXPLAYERS+1];
 int note[MAXPLAYERS+1];
 int g_iMessageClient = -1;
 
-Handle cvar_radio_spam_block = INVALID_HANDLE;
-Handle cvar_radio_spam_block_time = INVALID_HANDLE;
-Handle cvar_radio_spam_block_all = INVALID_HANDLE;
-Handle cvar_radio_spam_block_notify = INVALID_HANDLE;
+ConVar cvar_radio_spam_block = null;
+ConVar cvar_radio_spam_block_time = null;
+ConVar cvar_radio_spam_block_all = null;
+ConVar cvar_radio_spam_block_notify = null;
 
 bool notify = true;
 
@@ -22,7 +22,7 @@ public Plugin myinfo =
 	name = "Radio Spam Block",
 	author = "exvel, maxime1907, Obus, .Rushaway",
 	description = "Blocking players from radio spam. Also can disable radio commands for all players on the server if option is set.",
-	version = "1.2.1",
+	version = "1.2.2",
 	url = ""
 }
 
@@ -151,7 +151,8 @@ public Action Hook_RadioText(UserMsg msg_id, Handle bf, const int[] players, int
 	if (!g_bProtoBuf)
 		return Plugin_Continue;
 	
-	g_iMessageClient = PbReadInt(bf, "client");
+	Protobuf pb = UserMessageToProtobuf(bf);
+	g_iMessageClient = pb.ReadInt("client");
 
 	if (g_bBlocked[g_iMessageClient])
 		return Plugin_Handled;
@@ -165,7 +166,8 @@ public Action Hook_SendAudio(UserMsg msg_id, Handle bf, const int[] players, int
 		return Plugin_Continue;
 
 	char sSound[128];
-	PbReadString(bf, "radio_sound", sSound, sizeof(sSound));
+	Protobuf pb = UserMessageToProtobuf(bf);
+	pb.ReadString("radio_sound", sSound, sizeof(sSound));
 
 	if (strncmp(sSound[6], "lock", 4, false) == 0)
 		return Plugin_Continue;
@@ -191,12 +193,12 @@ public Action RestrictRadio(int client, int args)
 		return Plugin_Handled;
 	}
 
-	if (!GetConVarBool(cvar_radio_spam_block))
+	if (!cvar_radio_spam_block.BoolValue)
 		return Plugin_Handled;
 
-	notify = GetConVarBool(cvar_radio_spam_block_notify);
+	notify = cvar_radio_spam_block_notify.BoolValue;
 
-	if (GetConVarBool(cvar_radio_spam_block_all))
+	if (cvar_radio_spam_block_all.BoolValue)
 	{
 		if (notify)
 			PrintToChat(client, "[SM] %t", "Disabled");
@@ -210,7 +212,7 @@ public Action RestrictRadio(int client, int args)
 	}
 
 	int time = GetTime() - g_bRadioLastUse[client];
-	int block_time = GetConVarInt(cvar_radio_spam_block_time);
+	int block_time = cvar_radio_spam_block_time.IntValue;
 	if (time >= block_time)
 	{
 		g_bRadioLastUse[client] = GetTime();
