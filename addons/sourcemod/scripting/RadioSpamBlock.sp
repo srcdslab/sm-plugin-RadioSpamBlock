@@ -22,7 +22,7 @@ public Plugin myinfo =
 	name = "Radio Spam Block",
 	author = "exvel, maxime1907, Obus, .Rushaway",
 	description = "Blocking players from radio spam. Also can disable radio commands for all players on the server if option is set.",
-	version = "1.2.2",
+	version = "1.3.0",
 	url = ""
 }
 
