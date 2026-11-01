@@ -97,7 +97,7 @@ public void OnClientDisconnect(int client)
 public Action Command_RadioMute(int client, int argc)
 {
 	if (argc < 1) {
-		ReplyToCommand(client, "[SM] Usage: sm_radiomute <target>");
+		ReplyToCommand(client, "[SM] %t", "Usage radiomute");
 		return Plugin_Handled;
 	}
 
@@ -114,7 +114,7 @@ public Action Command_RadioMute(int client, int argc)
 	for (int i = 0; i < iTargetCount; i++)
 		g_bBlocked[iTargets[i]] = true;
 
-	CShowActivity2(client, "{green}[SM]{olive}", " {default}Radio muted {olive}%s", sTargetName);
+	CShowActivity2(client, "{green}[SM]{olive}", " {default}%t", "Activity radio muted", sTargetName);
 	LogAction(client, -1, "\"%L\" radio muted \"%s\"", client, sTargetName);
 
 	return Plugin_Handled;
@@ -123,7 +123,7 @@ public Action Command_RadioMute(int client, int argc)
 public Action Command_RadioUnmute(int client, int argc)
 {
 	if (argc < 1) {
-		ReplyToCommand(client, "[SM] Usage: sm_radiounmute <target>");
+		ReplyToCommand(client, "[SM] %t", "Usage radiounmute");
 		return Plugin_Handled;
 	}
 
@@ -140,7 +140,7 @@ public Action Command_RadioUnmute(int client, int argc)
 	for (int i = 0; i < iTargetCount; i++)
 		g_bBlocked[iTargets[i]] = false;
 
-	CShowActivity2(client, "{green}[SM]{olive}", " {default}Radio unmuted {olive}%s", sTargetName);
+	CShowActivity2(client, "{green}[SM]{olive}", " {default}%t", "Activity radio unmuted", sTargetName);
 	LogAction(client, -1, "\"%L\" radio unmuted \"%s\"", client, sTargetName);
 
 	return Plugin_Handled;

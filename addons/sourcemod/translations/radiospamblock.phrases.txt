@@ -44,4 +44,50 @@
 		"pt"			"Mensagens de rádio desativadas"
 		"chi"			"无线电消息已禁用"
 	}
+
+	"Usage radiomute"
+	{
+		"en"		"Usage: sm_radiomute <target>"
+		"fr"		"Utilisation : sm_radiomute <cible>"
+		"ru"		"Использование: sm_radiomute <цель>"
+		"es"		"Uso: sm_radiomute <objetivo>"
+		"de"		"Verwendung: sm_radiomute <Ziel>"
+		"pt"		"Uso: sm_radiomute <alvo>"
+		"chi"		"用法：sm_radiomute <目标>"
+	}
+
+	"Usage radiounmute"
+	{
+		"en"		"Usage: sm_radiounmute <target>"
+		"fr"		"Utilisation : sm_radiounmute <cible>"
+		"ru"		"Использование: sm_radiounmute <цель>"
+		"es"		"Uso: sm_radiounmute <objetivo>"
+		"de"		"Verwendung: sm_radiounmute <Ziel>"
+		"pt"		"Uso: sm_radiounmute <alvo>"
+		"chi"		"用法：sm_radiounmute <目标>"
+	}
+
+	"Activity radio muted"
+	{
+		"#format"	"{1:s}"
+		"en"		"Radio muted {olive}{1}"
+		"fr"		"Radio coupée pour {olive}{1}"
+		"ru"		"Радио заглушено: {olive}{1}"
+		"es"		"Radio silenciada a {olive}{1}"
+		"de"		"Funk stummgeschaltet für {olive}{1}"
+		"pt"		"Rádio silenciado de {olive}{1}"
+		"chi"		"已禁用无线电：{olive}{1}"
+	}
+
+	"Activity radio unmuted"
+	{
+		"#format"	"{1:s}"
+		"en"		"Radio unmuted {olive}{1}"
+		"fr"		"Radio rétablie pour {olive}{1}"
+		"ru"		"Радио включено: {olive}{1}"
+		"es"		"Radio reactivada a {olive}{1}"
+		"de"		"Funk wieder freigegeben für {olive}{1}"
+		"pt"		"Rádio liberado de {olive}{1}"
+		"chi"		"已恢复无线电：{olive}{1}"
+	}
 }
