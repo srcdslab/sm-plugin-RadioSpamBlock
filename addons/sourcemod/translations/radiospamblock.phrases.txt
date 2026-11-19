@@ -9,6 +9,12 @@
 		"de"			"Warte 1 Sekunde, bevor du eine neue Funknachricht sendest"
 		"pt"			"Aguarde 1 segundo antes de enviar uma nova mensagem de rádio"
 		"chi"			"请等待1秒后再发送新的无线电消息"
+		"pl"			"Odczekaj 1 sekundę przed wysłaniem kolejnej wiadomości radiowej"
+		"tr"			"Yeni bir telsiz mesajı göndermeden önce 1 saniye bekle"
+		"it"			"Aspetta 1 secondo prima di inviare un nuovo messaggio radio"
+		"ua"			"Зачекай 1 секунду перед надсиланням нового радіоповідомлення"
+		"zho"			"請等待1秒後再發送新的無線電訊息"
+		"cze"			"Počkej 1 sekundu před odesláním další rádiové zprávy"
 	}
 
 	"Wait X seconds"
@@ -21,6 +27,12 @@
 		"de"			"Warte {1} Sekunden, bevor du eine neue Funknachricht sendest"
 		"pt"			"Aguarde {1} segundos antes de enviar uma nova mensagem de rádio"
 		"chi"			"请等待{1}秒后再发送新的无线电消息"
+		"pl"			"Odczekaj {1} s. przed wysłaniem kolejnej wiadomości radiowej"
+		"tr"			"Yeni bir telsiz mesajı göndermeden önce {1} saniye bekle"
+		"it"			"Aspetta {1} secondi prima di inviare un nuovo messaggio radio"
+		"ua"			"Зачекай {1} с. перед надсиланням нового радіоповідомлення"
+		"zho"			"請等待{1}秒後再發送新的無線電訊息"
+		"cze"			"Počkej {1} s. před odesláním další rádiové zprávy"
 	}
 
 	"Radio muted"
@@ -32,6 +44,12 @@
 		"de"			"Dein Funk ist derzeit stummgeschaltet"
 		"pt"			"Seu rádio está silenciado no momento"
 		"chi"			"你的无线电目前已被禁言"
+		"pl"			"Twoje radio jest obecnie wyciszone"
+		"tr"			"Telsizin şu anda susturulmuş durumda"
+		"it"			"La tua radio è attualmente silenziata"
+		"ua"			"Твоє радіо наразі вимкнено"
+		"zho"			"你的無線電目前已被靜音"
+		"cze"			"Tvé rádio je momentálně ztlumeno"
 	}
 
 	"Disabled"
@@ -43,6 +61,12 @@
 		"de"			"Funknachrichten deaktiviert"
 		"pt"			"Mensagens de rádio desativadas"
 		"chi"			"无线电消息已禁用"
+		"pl"			"Wiadomości radiowe wyłączone"
+		"tr"			"Telsiz mesajları devre dışı"
+		"it"			"Messaggi radio disattivati"
+		"ua"			"Радіоповідомлення вимкнено"
+		"zho"			"無線電訊息已停用"
+		"cze"			"Rádiové zprávy jsou vypnuté"
 	}
 
 	"Usage radiomute"
@@ -54,6 +78,12 @@
 		"de"		"Verwendung: sm_radiomute <Ziel>"
 		"pt"		"Uso: sm_radiomute <alvo>"
 		"chi"		"用法：sm_radiomute <目标>"
+		"pl"		"Użycie: sm_radiomute <cel>"
+		"tr"		"Kullanım: sm_radiomute <hedef>"
+		"it"		"Uso: sm_radiomute <bersaglio>"
+		"ua"		"Використання: sm_radiomute <ціль>"
+		"zho"		"用法：sm_radiomute <目標>"
+		"cze"		"Použití: sm_radiomute <cíl>"
 	}
 
 	"Usage radiounmute"
@@ -65,6 +95,12 @@
 		"de"		"Verwendung: sm_radiounmute <Ziel>"
 		"pt"		"Uso: sm_radiounmute <alvo>"
 		"chi"		"用法：sm_radiounmute <目标>"
+		"pl"		"Użycie: sm_radiounmute <cel>"
+		"tr"		"Kullanım: sm_radiounmute <hedef>"
+		"it"		"Uso: sm_radiounmute <bersaglio>"
+		"ua"		"Використання: sm_radiounmute <ціль>"
+		"zho"		"用法：sm_radiounmute <目標>"
+		"cze"		"Použití: sm_radiounmute <cíl>"
 	}
 
 	"Activity radio muted"
@@ -77,6 +113,12 @@
 		"de"		"Funk stummgeschaltet für {olive}{1}"
 		"pt"		"Rádio silenciado de {olive}{1}"
 		"chi"		"已禁用无线电：{olive}{1}"
+		"pl"		"Wyciszono radio {olive}{1}"
+		"tr"		"Telsiz susturuldu {olive}{1}"
+		"it"		"Radio silenziata {olive}{1}"
+		"ua"		"Радіо вимкнено {olive}{1}"
+		"zho"		"已將無線電靜音 {olive}{1}"
+		"cze"		"Rádio ztlumeno {olive}{1}"
 	}
 
 	"Activity radio unmuted"
@@ -89,5 +131,11 @@
 		"de"		"Funk wieder freigegeben für {olive}{1}"
 		"pt"		"Rádio liberado de {olive}{1}"
 		"chi"		"已恢复无线电：{olive}{1}"
+		"pl"		"Włączono radio {olive}{1}"
+		"tr"		"Telsiz susturması kaldırıldı {olive}{1}"
+		"it"		"Radio riattivata {olive}{1}"
+		"ua"		"Радіо увімкнено {olive}{1}"
+		"zho"		"已解除無線電靜音 {olive}{1}"
+		"cze"		"Rádio zapnuto {olive}{1}"
 	}
 }
